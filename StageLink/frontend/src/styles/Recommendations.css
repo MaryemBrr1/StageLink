@@ -1,0 +1,600 @@
+:root {
+  --issat-primary: #2d74b8;
+  --issat-primary-dark: #184d7c;
+  --issat-primary-deep: #102a43;
+  --issat-primary-soft: rgba(45, 116, 184, 0.12);
+
+  --surface: #ffffff;
+  --surface-soft: #f7f9fc;
+  --text-main: #17212b;
+  --text-soft: #667085;
+  --text-muted: #98a2b3;
+  --border: rgba(219, 229, 239, 0.92);
+
+  --success: #12b76a;
+  --warning: #f59e0b;
+  --danger: #d92d20;
+
+  --shadow-soft: 0 12px 30px rgba(16, 42, 67, 0.08);
+  --shadow-hover: 0 18px 40px rgba(16, 42, 67, 0.12);
+
+  --radius-xl: 24px;
+  --radius-lg: 18px;
+  --radius-md: 14px;
+}
+.recommendations-container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.recommendations-header {
+  text-align: left;
+  margin: 0 0 0.85rem 0;
+  padding-top: 0;
+}
+
+.recommendations-header h1 {
+  display: block !important;
+  margin: 0 0 0.2rem 0 !important;
+  font-size: 1.6rem !important;
+  font-weight: 800 !important;
+  color: #ffffff !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.02em;
+  background: none !important;
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+.recommendations-header p {
+  margin: 0 !important;
+  color: rgba(235, 242, 248, 0.82) !important;
+  font-size: 0.98rem !important;
+  line-height: 1.45 !important;
+}
+
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0.35rem;
+}
+.recommendations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.recommendation-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  gap: 1.35rem;
+  padding: 1.4rem;
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: var(--shadow-soft);
+  transition: 0.25s ease;
+  cursor: pointer;
+  animation: none;
+}
+
+.recommendation-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2d74b8, #84b7df, #184d7c);
+}
+
+.recommendation-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+}
+
+.rank-badge {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #2d74b8 0%, #1f5f99 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  box-shadow: 0 10px 20px rgba(31, 95, 153, 0.18);
+  animation: none;
+}
+
+/* Offers content */
+.internship-info,
+.student-info {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Companies content */
+.company-card .company-info {
+  flex: 1;
+  min-width: 0;
+  display: block;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.internship-info h3,
+.student-info h3,
+.company-card h3 {
+  margin: 0 0 0.35rem 0;
+  color: var(--text-main);
+  font-weight: 800;
+  font-size: 1.18rem;
+}
+
+.internship-info .company-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.company-name,
+.company-location,
+.student-major,
+.student-offer {
+  color: var(--text-soft);
+  font-weight: 700;
+  font-size: 0.92rem;
+}
+
+/* Match badge */
+.match-badge {
+  min-width: 124px;
+  padding: 0.75rem 0.9rem;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.match-badge.high {
+  background: rgba(18, 183, 106, 0.12);
+  color: #067647;
+  border-color: rgba(18, 183, 106, 0.18);
+}
+
+.match-badge.medium {
+  background: rgba(45, 116, 184, 0.12);
+  color: var(--issat-primary-dark);
+  border-color: rgba(45, 116, 184, 0.18);
+}
+
+.match-badge.soft {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b54708;
+  border-color: rgba(245, 158, 11, 0.18);
+}
+
+.match-badge.low {
+  background: #f2f4f7;
+  color: #475467;
+  border-color: #e4e7ec;
+}
+
+.match-percentage {
+  display: block;
+  font-size: 1.28rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.match-text {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.internship-details,
+.company-details {
+  margin-top: 0.8rem;
+}
+
+.description {
+  margin: 0 0 1rem 0;
+  color: #475467;
+  line-height: 1.7;
+}
+
+.company-services {
+  margin: 0.4rem 0 0 0;
+  color: #475467;
+  line-height: 1.7;
+}
+
+.details-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.detail-item,
+.detail-item-compact {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #344054;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.detail-label {
+  min-width: 145px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.detail-icon {
+  color: var(--issat-primary);
+}
+
+.required-skills,
+.modal-skills,
+.matched-skills {
+  margin-top: 1rem;
+}
+
+.required-skills strong,
+.modal-skills strong,
+.matched-skills strong {
+  color: var(--text-main);
+}
+
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+}
+
+.recommendation-card .skill-tag,
+.modal-content .skill-tag {
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: #eaf3fb !important;
+  color: #184d7c !important;
+  border: 1px solid rgba(45, 116, 184, 0.16);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.score-details {
+  display: grid;
+  gap: 0.85rem;
+  margin-top: 1rem;
+}
+
+.progress-bar {
+  flex: 1;
+  min-width: 160px;
+  height: 12px;
+  background: linear-gradient(90deg, #2d74b8 0%, #69a9de 100%) !important;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #2d74b8 0%, #69a9de 100%);
+  transition: width 0.45s ease-out;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  padding-left: 0;
+}
+
+.progress-fill::after {
+  display: none;
+}
+
+/* Buttons */
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  min-width: 150px;
+}
+
+.card-actions button {
+  padding: 0.72rem 1rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: 0.22s ease;
+}
+
+.view-details-btn,
+.view-profile-btn,
+.view-company-btn {
+  background: #eef5fc;
+  color: var(--issat-primary-dark);
+}
+
+.apply-btn,
+.contact-btn,
+.follow-btn,
+.download-cv-btn,
+.submit-btn,
+.modal-actions .submit-btn {
+  background: linear-gradient(180deg, #2d74b8 0%, #1f5f99 100%) !important;
+  color: white !important;
+  box-shadow: 0 10px 20px rgba(31, 95, 153, 0.18);
+}
+
+.shortlist-btn {
+  background: #102a43;
+  color: white;
+}
+
+.accept-btn {
+  background: #12b76a;
+  color: white;
+}
+
+.reject-btn,
+.retry-btn {
+  background: #fff5f4;
+  color: #b42318;
+  border: 1px solid #f2cfc9;
+}
+
+.card-actions button:hover,
+.cancel-btn:hover,
+.modal-actions .submit-btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Loading / empty / error */
+.loading-spinner {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.spinner {
+  width: 54px;
+  height: 54px;
+  margin: 0 auto 1rem;
+  border: 3px solid #e7eef5;
+  border-top: 3px solid #2d74b8;
+  border-radius: 50%;
+  animation: rec-spin 1s linear infinite;
+}
+
+@keyframes rec-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-state,
+.error-message {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 20px;
+  color: var(--text-soft);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(16, 42, 67, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal-content {
+  width: 100%;
+  max-width: 760px;
+  background: white;
+  border-radius: 24px;
+  padding: 1.6rem;
+  box-shadow: 0 24px 60px rgba(7, 20, 33, 0.28);
+  border: 1px solid var(--border);
+}
+
+.modal-content h2 {
+  color: var(--text-main);
+  margin-bottom: 0.8rem;
+}
+
+.modal-company,
+.modal-details,
+.modal-description,
+.modal-skills,
+.modal-cover-letter {
+  margin-top: 1rem;
+}
+
+.modal-cover-letter textarea {
+  width: 100%;
+  margin-top: 0.6rem;
+  border-radius: 14px;
+  border: 1px solid #d8e2ec;
+  padding: 12px 14px;
+  resize: vertical;
+  outline: none;
+}
+
+.modal-cover-letter textarea:focus {
+  border-color: var(--issat-primary);
+  box-shadow: 0 0 0 4px rgba(45, 116, 184, 0.12);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  justify-content: flex-end;
+  margin-top: 1.4rem;
+}
+
+.cancel-btn,
+.modal-actions .cancel-btn {
+  background: #eef2f7;
+  color: #344054;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .card-header {
+    flex-direction: column;
+  }
+
+  .match-badge {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .recommendation-card {
+    flex-direction: column;
+  }
+
+  .rank-badge {
+    align-self: flex-start;
+  }
+
+  .card-actions {
+    flex-direction: row;
+    min-width: auto;
+    flex-wrap: wrap;
+  }
+
+  .recommendations-header h1 {
+    font-size: 1.65rem;
+  }
+
+  .detail-label {
+    min-width: 120px;
+  }
+}
+
+/* Follow Button */
+.follow-btn {
+  background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.follow-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(72, 187, 120, 0.3);
+}
+
+/* Company Modal */
+.company-modal {
+  max-width: 600px;
+}
+
+.company-modal h2 {
+  color: #1a202c;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-details {
+  background: #f7fafc;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.modal-description,
+.modal-skills,
+.modal-matched-skills,
+.modal-missing-skills {
+  margin-bottom: 20px;
+}
+
+.modal-description p {
+  margin-top: 8px;
+  line-height: 1.6;
+  color: #4a5568;
+}
+
+.skill-tag.matched {
+  background: #c6f6d5;
+  color: #22543d;
+}
+
+.skill-tag.missing {
+  background: #fed7d7;
+  color: #742a2a;
+}
+
+/* Company Card Specific */
+.company-card .company-location {
+  color: #718096;
+  margin: 8px 0;
+}
+
+.company-card .company-services {
+  color: #4a5568;
+  line-height: 1.5;
+  margin: 12px 0;
+}
+
+.matched-skills {
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.matched-skills strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #2d3748;
+}
