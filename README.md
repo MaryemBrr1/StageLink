@@ -1,148 +1,115 @@
-# 🎓 ISSAT Sousse - Plateforme de Gestion de Stages
+# StageLink: Internship Matching Platform
 
-## 📋 Vue d'ensemble
+An intelligent web platform that connects students, companies and teachers to simplify internship search and management, with an AI recommendation engine that suggests relevant offers and profiles.
 
-La plateforme **ISSAT Sousse - Gestion de Stages** est une solution complète qui connecte les étudiants, les entreprises et les enseignants pour faciliter la recherche et la gestion des stages. Elle intègre un **moteur de recommandation intelligent basé sur l'IA** pour proposer des offres personnalisées.
+> Academic team project developed at ISSAT Sousse.
 
----
+## Overview
 
-## 🎯 Objectifs du projet
+StageLink centralizes internship offers, applications and user management. Each type of user has a dedicated interface, and a recommendation engine computes compatibility scores between students and offers or companies.
 
-- ✅ Faciliter la mise en relation entre étudiants et entreprises
-- ✅ Automatiser le suivi des candidatures et des stages
-- ✅ Proposer des recommandations intelligentes et personnalisées
-- ✅ Centraliser la gestion des offres, des utilisateurs et des candidatures
-- ✅ Fournir une interface moderne et intuitive pour chaque type d'utilisateur
+## Features by user role
 
----
+**Student**
+- Profile creation and management, CV and profile picture upload, skills
+- Browse internship offers and apply
+- Track applications (pending, accepted, rejected)
+- AI recommendations of offers and companies
 
-## 👥 Types d'utilisateurs
+**Recruiter / Company**
+- Company profile management
+- Publish and manage internship offers
+- Review applications and update their status
+- Search for talents by skills, AI recommendations of students
 
-### 🎓 Étudiant
-- Création et gestion de profil
-- Upload de CV et photo de profil
-- Ajout de compétences
-- Consultation des offres de stage
-- Candidature aux offres
-- Suivi des candidatures (statut : en attente, acceptée, rejetée)
-- Recommandations IA d'offres et d'entreprises
+**Administrator**
+- Manage users (activate, deactivate, delete) and companies
+- View all offers and applications
 
-### 🏢 Recruteur / Entreprise
-- Gestion du profil entreprise
-- Publication d'offres de stage
-- Consultation des candidatures reçues
-- Gestion des statuts des candidatures
-- Recherche de talents par compétences
-- Accès aux recommandations IA
+**Teacher** *(planned)*
+- Follow students and internships, evaluate internship reports
 
-### 👨‍🏫 Enseignant
-- Consultation des étudiants et des stages
-- Suivi pédagogique (à venir)
-- Évaluation des rapports de stage (à venir)
+## AI recommendation engine
 
-### 👑 Administrateur
-- Gestion des utilisateurs (activation/désactivation/suppression)
-- Gestion des entreprises
-- Consultation de toutes les offres et candidatures
-- Supervision globale de la plateforme
+A content-based recommendation system combining:
 
----
+| Technique | Purpose |
+|---|---|
+| TF-IDF | Convert text into numerical vectors |
+| Cosine similarity | Measure similarity between profiles and offers |
+| Keyword extraction | Detect skills automatically |
+| Synonym matching | Recognize variations of the same term |
+| Weighted scoring | Compute a global compatibility score |
 
-## 🧠 Moteur de Recommandation IA
-
-### Modèle utilisé
-
-**Système de recommandation hybride basé sur le contenu** combinant :
-
-| Technique | Description |
-|-----------|-------------|
-| **TF-IDF** | Transformation du texte en vecteurs numériques |
-| **Cosine Similarity** | Calcul de similarité entre profils |
-| **Keyword Extraction** | Extraction automatique des compétences |
-| **Synonym Matching** | Reconnaissance des variations de termes |
-| **Weighted Scoring** | Score global pondéré |
-
-### Formule de calcul
-
-Overall Score =
-(Skills × 0.45) +
-(Education × 0.20) +
-(Experience × 0.15) +
-(Location × 0.05) +
-(Projects × 0.10) +
-(Certifications × 0.05)
-
-### Types de recommandations
+```
+Overall score = Skills x 0.45 + Education x 0.20 + Experience x 0.15
+              + Projects x 0.10 + Location x 0.05 + Certifications x 0.05
+```
 
 | Endpoint | Description |
-|----------|-------------|
-| `/recommend/student-to-offers` | Recommandation d'offres pour un étudiant |
-| `/recommend/student-to-companies` | Recommandation d'entreprises pour un étudiant |
-| `/recommend/company-to-students` | Recommandation d'étudiants pour une entreprise |
+|---|---|
+| `/recommend/student-to-offers` | Recommend offers to a student |
+| `/recommend/student-to-companies` | Recommend companies to a student |
+| `/recommend/company-to-students` | Recommend students to a company |
 
----
+## Tech stack
 
-## 🛠️ Technologies utilisées
+| Layer | Technologies |
+|---|---|
+| Frontend | React 18, Ant Design, Axios, React Router |
+| Backend | Java, Spring Boot, Spring Security (JWT), Spring Data JPA, Maven |
+| Database | MySQL |
+| AI engine | Python, FastAPI, scikit-learn, spaCy, pdfplumber / PyPDF2, Uvicorn |
 
-### Frontend
-| Technologie | Utilisation |
-|-------------|-------------|
-| **React 18** | Bibliothèque UI |
-| **Ant Design** | Composants d'interface |
-| **Axios** | Requêtes HTTP |
-| **React Router DOM** | Navigation |
-| **CSS3** | Styles et animations |
+## Repository structure
 
-### Backend (Spring Boot)
-| Technologie | Utilisation |
-|-------------|-------------|
-| **Java 11/17** | Langage principal |
-| **Spring Boot** | Framework backend |
-| **Spring Security** | Authentification JWT |
-| **Spring Data JPA** | ORM |
-| **MySQL** | Base de données |
-| **Maven** | Gestion des dépendances |
+```
+.
+└── StageLink/
+    ├── ai-engine/           # FastAPI recommendation service
+    ├── backend intership/   # Spring Boot REST API
+    └── frontend/            # React application
+```
 
-### Moteur IA (Python)
-| Technologie | Utilisation |
-|-------------|-------------|
-| **Python 3.9+** | Langage principal |
-| **FastAPI** | Framework API |
-| **scikit-learn** | TF-IDF, Cosine Similarity |
-| **PyPDF2 / pdfplumber** | Extraction de CV |
-| **spaCy** | NLP (traitement du texte) |
-| **Uvicorn** | Serveur ASGI |
+## Getting started
 
----
+**Prerequisites:** Java 11 or 17, Node.js, Python 3.9+, MySQL.
 
-## 📊 Structure de la base de données
+1. **Database.** Create a MySQL database named `internship_db`. Tables are generated automatically by Hibernate. Adjust the database username and password in `StageLink/backend intership/src/main/resources/application.properties` to match your local setup.
+2. **Backend** (runs on port 8080):
+   ```bash
+   cd "StageLink/backend intership"
+   ./mvnw spring-boot:run
+   ```
+3. **AI engine:**
+   ```bash
+   cd StageLink/ai-engine
+   python -m venv venv
+   venv\Scripts\activate
+   pip install -r requirements.txt
+   uvicorn app.main:app --reload
+   ```
+4. **Frontend:**
+   ```bash
+   cd StageLink/frontend
+   npm install
+   npm start
+   ```
 
-### Principales tables
+## Notes
 
-| Table | Description |
-|-------|-------------|
-| `users` | Authentification et comptes utilisateurs |
-| `students` | Profils étudiants (formation, compétences) |
-| `recruiters` | Profils recruteurs (entreprise associée) |
-| `enseignants` | Profils enseignants (encadrement) |
-| `companies` | Annuaire des entreprises |
-| `offers` | Offres de stage (PFE, PFA, stage été) |
-| `postulations` | Candidatures des étudiants |
-| `skills` | Compétences des étudiants |
+- The JWT secret in `application.properties` is a placeholder. Replace it with your own secret before any deployment.
+- The CVs in `ai-engine/app/cvs/` are fictitious test data generated by `ai-engine/option/generate_cvs.py`.
 
+## Future improvements
 
-## 📈 Améliorations futures
-- 🤖 Amélioration du modèle IA (deep learning)
-- 📊 Dashboard analytique avancé
-- 📱 Application mobile
-- 🌐 Internationalisation (anglais/arabe)
-- 🔔 Notifications en temps réel
-- 📧 Envoi d'emails automatiques
-- 🎯 Matching avancé par CV parsé
+- Improved AI model (deep learning)
+- Advanced analytics dashboard
+- Mobile application
+- Internationalization (English / Arabic)
+- Real-time notifications and automatic emails
+- Matching based on parsed CVs
 
+## About
 
-## 👥 Équipe projet
-- Chef de projet - Coordination et supervision
-- Développeur Backend - Spring Boot, API REST, JWT
-- Développeur Frontend - React, Ant Design
-- Ingénieur IA - FastAPI, scikit-learn, NLP
+Academic team project developed by a team of students at ISSAT Sousse.
